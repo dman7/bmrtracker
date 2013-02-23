@@ -2,13 +2,44 @@
 <html>
 <head>
   <title>Bmrtracker</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag "bootstrap" %>
+  <%= stylesheet_link_tag "bootstrap-responsive" %>
+
+  <%= javascript_include_tag "jquery" %>
+  <%= javascript_include_tag "bootstrap" %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class = "brand" href = "/">
+          <%= image_tag 'logo.png', :alt => "BMR Tracker" %>
+        </a>
 
-<%= yield %>
-
+        <ul class="nav pull-right">
+          <%- [['Learn More',  "/more"], ['Blog', "http://www.example.com"] ].each do |t| -%>
+            <%= (request.path == t[1]) ? '<li class = "active">'.html_safe : '<li>'.html_safe %>
+              <%= link_to t[0], t[1] %>
+            </li>
+          <%- end -%>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="content">
+      HELLO
+      <% if content_for?(:content) %>
+        <%= yield :content %>
+      <% end %>
+    </div>
+    
+    <footer>
+      <p>Copyright 2013</p>
+    </footer>
+  </div>
 </body>
 </html>
