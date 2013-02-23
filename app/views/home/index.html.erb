@@ -1,5 +1,5 @@
 
-<% content_for :content do %> 
+<% content_for :content do %>
   <script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
 
   <%= javascript_include_tag "gmap3.js" %>
@@ -27,11 +27,15 @@
  	});
   </script>
 
-  <h1>BMR Tracker</h1>
-  <div class = "hero-unit">
-    Hello World!
-	Howdy
-
-	<div id="my_map" style="width:"600px"; height:"350px"></div>
+  <div class="jumbotron masthead">
+    <div class="container">
+      <div id="my_map" style="width:"600px"; height:"350px"></div>
+      <h1>BMR Tracker</h1>
+      <p>Efficient search for affordable houses.</p>
+      <p>
+        <%= link_to "Search BMR properties", properties_path, :class => "btn btn-info" %>
+      </p>
+    </div>
   </div>
+
 <% end %>
