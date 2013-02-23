@@ -1,7 +1,37 @@
 
-<% content_for :content do %>
+<% content_for :content do %> 
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+
+  <%= javascript_include_tag "gmap3.js" %>
+  <script type="text/javascript">
+  	 $(document).ready(function() {
+   		$("#my_map").width("600px").height("350px").gmap3(
+	{
+  map:{
+    options:{
+      center:[48.8621, 2.352047],
+      zoom: 15
+    }
+  },
+
+
+		    marker:{
+      				 values:[
+      {latLng:[48.8621, 2.352047]},
+      {latLng:[48.8622, 2.352047]},
+      {latLng:[48.8623, 2.352047], options:{icon: "http://maps.google.com/mapfiles/marker_green.png"}}
+    ],
+    			},
+	}
+	);
+ 	});
+  </script>
+
   <h1>BMR Tracker</h1>
   <div class = "hero-unit">
     Hello World!
+	Howdy
+
+	<div id="my_map" style="width:"600px"; height:"350px"></div>
   </div>
 <% end %>
