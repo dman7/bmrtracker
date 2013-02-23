@@ -15,12 +15,9 @@
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
-        <a class = "brand" href = "/">
-          <%= image_tag 'logo.png', :alt => "BMR Tracker" %>
-        </a>
 
         <ul class="nav">
-          <%- [['Learn More',  "/more"], ['Blog', "http://www.example.com"] ].each do |t| -%>
+          <%- [['Learn More',  "/more"], ['Properties', properties_path] ].each do |t| -%>
             <%= (request.path == t[1]) ? '<li class = "active">'.html_safe : '<li>'.html_safe %>
               <%= link_to t[0], t[1] %>
             </li>
