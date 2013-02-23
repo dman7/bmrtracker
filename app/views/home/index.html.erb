@@ -1,7 +1,14 @@
 
 <% content_for :content do %>
-  <h1>BMR Tracker</h1>
-  <div class = "hero-unit">
-    Hello World!
+
+  <div class="jumbotron masthead">
+    <div class="container">
+      <h1>BMR Tracker</h1>
+      <p>Efficient search for affordable houses.</p>
+      <p>
+        <%= link_to "Search BMR properties", properties_path, :class => "btn btn-info" %>
+      </p>
+    </div>
   </div>
+
 <% end %>
