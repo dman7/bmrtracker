@@ -1,6 +1,7 @@
-  <script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+<%= javascript_include_tag "gmap3.js" %>
 
-  <%= javascript_include_tag "gmap3.js" %>
+<% content_for :content do %>
+
   <script type="text/javascript">
      $(document).ready(function() {
       $("#my_map").width("600px").height("350px").gmap3(
@@ -24,3 +25,4 @@
   );
   });
   </script>
+<% end %>
