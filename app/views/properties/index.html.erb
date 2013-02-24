@@ -7,31 +7,46 @@
   <%= javascript_include_tag "gmap3" %>
 
 
-  <script type="text/javascript">
-    window.properties = <%= @properties.to_json.html_safe %>;
+   <script type="text/javascript">
+      window.properties = <%= @properties.to_json.html_safe %>;
 
-
-     $(document).ready(function() {
-      $("#my_map").width("820px").height("500px").gmap3(
-      {
+    var infowindow;
+    var addressValueArray = [];
+       $(document).ready(function() {
+      
+      for (var i = 0; i < window.properties.length - 30; i++) {      
+        addressValueArray.push({address : window.properties[i].address})
+      }
+        $("#my_map").width("940px").height("600px").gmap3(
+    {
       map:{
         options:{
-          center:[48.8621, 2.352047],
-          zoom: 15
+          center:[37.7750, 237.5],
+          zoom: 11
         }
+              
       },
+      marker:{
+      events: {
+          // add events here
+          click: function(marker, event, data) { 
+      if (infowindow)
+        infowindow.close();
+      infowindow = new google.maps.InfoWindow();
+      var map = $(this).gmap3('get');
+      infowindow.open(map, marker);
 
-
-        marker:{
-               values:[
-      {latLng:[48.8621, 2.352047]},
-      {latLng:[48.8622, 2.352047]},
-      {latLng:[48.8623, 2.352047], options:{icon: "http://maps.google.com/mapfiles/marker_green.png"}}
-    ],
-
-  },
-  }
-  );
-  });
+      infowindow.setContent("<div style = 'color:red'><a href = '/managers/1'>Contact Manager</a>");
+     },
+        },
+      values:addressValueArray,
+            },
+    }
+    );
+    });
   </script>
 <% end %>
+
+
+
+
