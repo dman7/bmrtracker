@@ -1,8 +1,21 @@
-<%= javascript_include_tag "gmap3.js" %>
 
 <% content_for :content do %>
+  
+  <div class = "hero-unit">
+    
+    <div id = "my_map"></div>
+  </div>
+
+
+
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+  <%= javascript_include_tag "gmap3" %>
+
 
   <script type="text/javascript">
+    window.properties = <%= @properties.to_json.html_safe %>;
+
+
      $(document).ready(function() {
       $("#my_map").width("600px").height("350px").gmap3(
       {
