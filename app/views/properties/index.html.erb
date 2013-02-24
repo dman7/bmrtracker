@@ -14,7 +14,7 @@
     var addressValueArray = [];
        $(document).ready(function() {
       
-      for (var i = 0; i < window.properties.length - 30; i++) {      
+      for (var i = 0; i < window.properties.length - 50; i++) {      
         addressValueArray.push({address : window.properties[i].address})
       }
         $("#my_map").width("940px").height("600px").gmap3(
@@ -36,7 +36,20 @@
       var map = $(this).gmap3('get');
       infowindow.open(map, marker);
 
-      infowindow.setContent("<div style = 'color:red'><a href = '/managers/1'>Contact Manager</a>");
+
+
+    var marker_id = data.id.split("_")[1];
+    var properties_str = "<br>"   
+     for (prop in window.properties[marker_id]) {
+             properties_str += prop + " : " + window.properties[marker_id][prop] + "<br>";
+     }
+
+     console.log(properties_str)
+
+
+      var marker_id = data.id.split("_")[1];
+      console.log(marker_id);
+      infowindow.setContent("<div style = 'color:red'>" + properties_str + "<a href = ''>Contact Manager</a></div>" );
      },
         },
       values:addressValueArray,
