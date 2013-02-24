@@ -1,0 +1,15 @@
+
+<% content_for :content do %>
+  <h1>Managers</h1>  
+
+  <% @managers.each do |m| %>
+    <table class="table"> 
+      <tbody>
+        <tr>
+          <td><%= link_to "#{m.name}", manager_path(m) %></td>
+        </tr>
+      </tbody>
+    </table>
+
+  <% end %>
+<% end %>
