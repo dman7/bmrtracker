@@ -4,7 +4,6 @@ class PropertiesController < ApplicationController
 
   def index
     @properties = Property.all
-    respond_with @properties
   end
 
   # GET /property/1
