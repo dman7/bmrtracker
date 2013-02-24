@@ -26,6 +26,8 @@ csv.each do |row|
 end
 puts "Properties saved correctly"
 
+
+
 puts "Creating managers..."
 csv_managers.each do |row|
 

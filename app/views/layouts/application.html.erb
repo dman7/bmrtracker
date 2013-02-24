@@ -36,7 +36,7 @@
         <div class="nav-collapse collapse">
 
           <ul class="nav">
-            <%- [['Home',  "/"], ['Properties', properties_path], ["Learn More", "/about"] ].each do |t| -%>
+            <%- [['Home',  "/"], ['Properties', properties_path] ].each do |t| -%>
               <%= (request.path == t[1]) ? '<li class = "active">'.html_safe : '<li>'.html_safe %>
                 <%= link_to t[0], t[1] %>
               </li>

@@ -1,0 +1,24 @@
+
+<% content_for :content do %>
+  <h1><%= @manager.name %></h1>  
+
+  <div class = "hero-unit">
+    <table class="table"> 
+      <tbody>
+        <tr>
+          <td>Phone Number: </td>
+          <td><%= @manager.phone_number %></td>
+        </tr>
+        <tr>
+          <td>Email: </td>
+          <td><%= @manager.email %></td>
+        </tr>
+        <tr>
+          <td>Address: </td>
+          <td><%= @manager.address %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+<% end %>

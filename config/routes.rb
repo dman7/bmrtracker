@@ -3,6 +3,7 @@ Bmrtracker::Application.routes.draw do
   root :to      => "home#index"
 
   resources :properties
+  resources :managers
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
