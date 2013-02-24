@@ -25,6 +25,8 @@ Bmrtracker::Application.configure do
 
   config.assets.precompile += ["base.css", "docs.css",  "bootstrap.css"]
 
+  config.assets.precompile += ["bootstrap.js", "gmap3.js", "gmap3.min.js", "jquery.js"]
+
 
   # Specifies the header that your server uses for sending files
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
