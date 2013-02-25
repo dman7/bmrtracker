@@ -1,63 +1,83 @@
 
 <% content_for :content do %>
+
+
   <h1>Property Listings</h1>  
-  <div id = "my_map"></div>
+  <div id="map_canvas" style="width: 940px; height: 600px;"></div>
+
+
 
   <script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
-  <%= javascript_include_tag "gmap3" %>
-
-
-   <script type="text/javascript">
-      window.properties = <%= @properties.to_json.html_safe %>;
-
-    var infowindow;
-    var addressValueArray = [];
-       $(document).ready(function() {
-      
-      for (var i = 0; i < window.properties.length - 50; i++) {      
-        addressValueArray.push({address : window.properties[i].address})
-      }
-        $("#my_map").width("940px").height("600px").gmap3(
-    {
-      map:{
-        options:{
-          center:[37.7750, 237.5],
-          zoom: 11
-        }
-              
-      },
-      marker:{
-      events: {
-          // add events here
-          click: function(marker, event, data) { 
-      if (infowindow)
-        infowindow.close();
-      infowindow = new google.maps.InfoWindow();
-      var map = $(this).gmap3('get');
-      infowindow.open(map, marker);
+  <%= javascript_include_tag "properties" %>
 
 
 
-    var marker_id = data.id.split("_")[1];
-    var properties_str = "<br>"   
-     for (prop in window.properties[marker_id]) {
-             properties_str += prop + " : " + window.properties[marker_id][prop] + "<br>";
-     }
-
-     console.log(properties_str)
-
-
-      var marker_id = data.id.split("_")[1];
-      console.log(marker_id);
-      infowindow.setContent("<div style = 'color:black'>" + properties_str + "<a href = '/managers/1'>Contact Manager</a></div>" );
-     },
-        },
-      values:addressValueArray,
-            },
-    }
-    );
-    });
+  <script type = "text/javascript">
+    // TODO: We're hitting Google Maps OVER_QUERY_LIMIT with number of properties we have. Limiting to 10 for now.
+    window.properties = <%= @properties[0..10].to_json.html_safe %>
+    window.googleMaps.initialize()
+    window.googleMaps.geocodeProperties(properties)
   </script>
+
+
+
+
+  <script type = "text/javascript">
+    
+    // var infowindow;
+    // var addressValueArray = [];
+    //    $(document).ready(function() {
+      
+    //   for (var i = 0; i < window.properties.length - 50; i++) {      
+    //     addressValueArray.push({address : window.properties[i].address})
+    //   }
+    //     $("#my_map").width("940px").height("600px").gmap3(
+    // {
+    //   map:{
+    //     options:{
+    //       center:,
+    //       zoom: 11
+    //     }
+              
+    //   },
+    //   marker:{
+    //   events: {
+    //       // add events here
+    //       click: function(marker, event, data) { 
+    //   if (infowindow)
+    //     infowindow.close();
+    //   infowindow = new google.maps.InfoWindow();
+    //   var map = $(this).gmap3('get');
+    //   infowindow.open(map, marker);
+
+
+
+    // var marker_id = data.id.split("_")[1];
+    // var properties_str = "<br>"   
+    //  for (prop in window.properties[marker_id]) {
+    //          properties_str += prop + " : " + window.properties[marker_id][prop] + "<br>";
+    //  }
+
+    //  console.log(properties_str)
+
+
+    //   var marker_id = data.id.split("_")[1];
+    //   console.log(marker_id);
+    //   infowindow.setContent("<div style = 'color:black'>" + properties_str + "<a href = '/managers/1'>Contact Manager</a></div>" );
+    //  },
+    //     },
+    //   values:addressValueArray,
+    //         },
+    // }
+    // );
+    // });
+ 
+
+  </script>
+
+
+
+
 <% end %>
 
 
